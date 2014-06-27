@@ -66,7 +66,7 @@ def _decode_query_body(message, deep_decode):
 
 
 def _decode_update_body(message, deep_decode):
-    zidx = 0 + len(pymongo.message.__ZERO)
+    zidx = 0 + len(pymongo.message._ZERO_32)
     collection_name, zidx = _decode_collection_name(message, zidx)
     options, = struct.unpack('<i', message[zidx:zidx + 4])
     msg = _decode_docs(message[zidx + 4:], deep_decode)
@@ -91,9 +91,9 @@ def _decode_insert_body(message, deep_decode):
 
 
 def _decode_delete_body(message, deep_decode):
-    zidx = 0 + len(pymongo.message.__ZERO)
+    zidx = 0 + len(pymongo.message._ZERO_32)
     collection_name, zidx = _decode_collection_name(message, zidx)
-    zidx += len(pymongo.message.__ZERO)
+    zidx += len(pymongo.message._ZERO_32)
     msg = _decode_docs(message[zidx:], deep_decode)
     return dict(collection=collection_name,
                 spec=msg[0])

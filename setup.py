@@ -10,7 +10,7 @@ def read(fname):
 
 setup(
     name = "pymongo-newrelic",
-    version = "0.1.0",
+    version = "1.0.0",
     author = "Nino Walker",
     author_email = "nino@livefyre.com",
     description = ("Enable query/op-level inspection of pymongo in your newrelic dashboard."),
@@ -18,7 +18,7 @@ setup(
     keywords = "mongo mongodb newrelic",
     url = "https://github.com/Livefyre/pymongo-newrelic",
     packages=find_packages(exclude=['tests']),
-    install_requires=["pymongo>2.1", "newrelic"],
+    install_requires=["pymongo>=2.7", "newrelic>=1.11.0.55"],
     long_description=read('README.md'),
     setup_requires=['nose>=1.0', 'coverage', 'nosexcover', 'mock'],
     test_suite='nose.collector',
